@@ -1,0 +1,38 @@
+{% extends "shared/base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2>{{ job.title }}</h2>
+                    <h5 class="mb-0">{{ job.company_name }}</h5>
+                </div>
+                <div class="card-body">
+                    <h4>Job Description</h4>
+                    <p>{{ job.description }}</p>
+                    <hr>
+                    <p><strong>Location:</strong> {{ job.location if job.location else 'N/A' }}</p>
+                    <p class="text-danger"><strong>Application Deadline:</strong> {{ job.deadline }}</p>
+                </div>
+                <div class="card-footer text-center">
+                    {% if session.get('user_id') and not session.get('is_admin') %}
+                        {% if already_applied %}
+                            <button class="btn btn-success" disabled>✓ Applied</button>
+                            <p class="mt-2 text-muted">You have already applied for this position.</p>
+                        {% else %}
+                            <form action="{{ url_for('apply', job_id=job.job_id) }}" method="POST">
+                                <button type="submit" class="btn btn-primary btn-lg">Apply Now</button>
+                            </form>
+                        {% endif %}
+                    {% elif not session.get('user_id') %}
+                        <a href="{{ url_for('login') }}" class="btn btn-secondary">Login to Apply</a>
+                    {% endif %}
+                </div>
+            </div>
+            <a href="{{ url_for('home') }}" class="btn btn-outline-secondary mt-3">← Back to All Jobs</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

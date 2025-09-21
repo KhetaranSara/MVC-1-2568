@@ -1,0 +1,12 @@
+candidate_id,first_name,last_name,email,is_admin
+99999999,Admin,User,admin@jobfair.com,True
+80000001,Somsak,Jaidee,somsak.j@email.com,False
+80000002,Malee,Rakdee,malee.r@email.com,False
+80000003,Piti,Manas,piti.m@email.com,False
+80000004,Chujai,Deejing,chujai.d@email.com,False
+80000005,Arun,Sawasdee,arun.s@email.com,False
+80000006,Wandee,Yimlamai,wandee.y@email.com,False
+80000007,Somchai,Khemkaew,somchai.k@email.com,False
+80000008,Jinda,Suksabai,jinda.s@email.com,False
+80000009,Naree,Ngamjit,naree.n@email.com,False
+80000010,Pornchai,Rungruang,pornchai.r@email.com,False

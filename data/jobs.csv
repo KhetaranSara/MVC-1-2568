@@ -1,0 +1,12 @@
+job_id,title,description,company_id,deadline,status
+10000001,Senior Python Developer,"Develop amazing web applications using Python and Flask.",11000001,2025-10-31,open
+10000002,Frontend Developer,"Create beautiful and responsive user interfaces with React.",11000001,2025-10-25,open
+10000003,Data Scientist,"Analyze data and build machine learning models.",33000003,2025-11-10,open
+10000004,UI/UX Designer,"Design intuitive and user-friendly interfaces.",22000002,2025-10-20,open
+10000005,Junior Software Engineer,"Join our team to learn and grow as a software engineer.",11000001,2025-11-15,open
+10000006,Marketing Specialist,"Develop and execute marketing campaigns.",22000002,2025-10-18,closed
+10000007,Product Manager,"Lead the product development lifecycle.",11000001,2025-11-05,open
+10000008,Senior Data Analyst,"Work with large datasets to extract insights.",33000003,2025-11-20,open
+10000009,Graphic Designer,"Create visual concepts for our brand.",22000002,2025-11-01,open
+10000010,Backend Engineer (Go),"Build scalable backend services using Go.",11000001,2025-12-01,open
+10000011,DevOps Engineer,"Manage our cloud infrastructure and CI/CD pipelines.",33000003,2025-11-22,open

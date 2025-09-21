@@ -1,0 +1,51 @@
+{% extends "admin/admin_base.html" %}
+
+{% block admin_title %}
+    All Job Positions
+{% endblock %}
+
+{% block admin_content %}
+<div class="d-flex justify-content-end align-items-center mb-3">
+    <span class="me-2">Sort by:</span>
+    <a href="{{ url_for('admin_all_jobs', sort_by='title') }}" class="btn btn-outline-secondary btn-sm">Job Title</a>
+    <a href="{{ url_for('admin_all_jobs', sort_by='company') }}" class="btn btn-outline-secondary btn-sm ms-1">Company</a>
+    <a href="{{ url_for('admin_all_jobs', sort_by='applicants') }}" class="btn btn-outline-secondary btn-sm ms-1">Applicants</a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>Job Title</th>
+                <th>Company</th>
+                <th>Applicants</th>
+                <th>Status</th>
+                <th>Deadline</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for job in jobs %}
+            <tr>
+                <td>{{ job.title }}</td>
+                <td>{{ job.company_name }}</td>
+                <td>
+                    <span>{{ job.applicant_count }}</span>
+                </td>
+                <td>
+                    {% if job.status == 'open' %}
+                    <span class="badge bg-success">Open</span>
+                    {% else %}
+                    <span class="badge bg-danger">Closed</span>
+                    {% endif %}
+                </td>
+                <td>{{ job.deadline }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="5" class="text-center">No jobs found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

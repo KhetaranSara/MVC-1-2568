@@ -1,0 +1,38 @@
+{% extends "admin/admin_base.html" %}
+
+{% block admin_title %}
+    All Candidates
+{% endblock %}
+
+{% block admin_content %}
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for candidate in candidates %}
+            <tr>
+                <td>{{ candidate.first_name }}</td>
+                <td>{{ candidate.last_name }}</td>
+                <td>{{ candidate.email }}</td>
+                <td>
+                    <a href="{{ url_for('candidate_detail', candidate_id=candidate.candidate_id) }}" class="btn btn-sm btn-outline-primary">
+                        View Details
+                    </a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4" class="text-center">No candidates found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

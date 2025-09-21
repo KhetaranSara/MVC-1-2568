@@ -1,0 +1,42 @@
+{% extends "shared/base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Open Positions</h1>
+    <div>
+        <span class="me-2">Sort by:</span>
+        <a href="{{ url_for('home', sort_by='title') }}" class="btn btn-outline-secondary btn-sm">Job Title</a>
+        <a href="{{ url_for('home', sort_by='company') }}" class="btn btn-outline-secondary btn-sm">Company</a>
+        <a href="{{ url_for('home', sort_by='deadline') }}" class="btn btn-outline-secondary btn-sm">Deadline</a>
+    </div>
+</div>
+
+<div class="row">
+    {% for job in jobs %}
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="{{ url_for('job_detail', job_id=job.job_id) }}" class="text-decoration-none">
+                        {{ job.title }}
+                    </a>
+                </h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ job.company_name }}</h6>
+                <p class="card-text">{{ job.description }}</p>
+                <p class="card-text"><small class="text-danger">Deadline: {{ job.deadline }}</small></p>
+                {% if session.get('is_admin') %}
+                    <p class="card-text"><small class="text-info">Applicants: {{ job.applicant_count }}</small></p>
+                {% endif %}
+            </div>
+            <div class="card-footer d-grid">
+                <a href="{{ url_for('job_detail', job_id=job.job_id) }}" class="btn btn-outline-primary">
+                    View Details
+                </a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <p>No open positions at the moment.</p>
+    {% endfor %}
+</div>
+{% endblock %}
